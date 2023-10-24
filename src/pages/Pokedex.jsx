@@ -31,25 +31,26 @@ const Pokedex = () => {
     setIsdarkmode(!isdarkmode)
   }
 
-  useEffect(()=>{
+  useEffect(() => {
     isdarkmode
-    ? (document.documentElement.classList.add('dark'), localStorage.setItem('theme', 'dark'))
-    : (document.documentElement.classList.remove('dark'), localStorage.setItem('theme', 'light'))
+      ? (document.documentElement.classList.add('dark'), localStorage.setItem('theme', 'dark'))
+      : (document.documentElement.classList.remove('dark'), localStorage.setItem('theme', 'light'))
   }, [isdarkmode])
 
   return (
-    <main className='bg-white dark:bg-black dark:text-white transition-colors duration-1000 mb-14 '>
-      <section>
-        <p className='text-center bg-slate-400 dark:bg-black  sm:text-3xl text-white '> Welcome <span className='font-bold text-red-800 '>{name}</span> </p>
+    <main className='dark:text-white transition-colors duration-1000 py-8 '>
+      <section className=''>
+        <p className='text-center bg-black dark:bg-white  sm:text-3xl text-white dark:text-black font-bold '> Welcome
+          <span className='font-bold text-red-600 dark:text-black  '> {name}</span> </p>
         {
           isdarkmode ?
-            <i onClick={handleChangeMode} className='bx bxs-sun text-yellow-400 bg-black border-[1px] rounded-full p-1 m-2 cursor-pointer dark:transition-colors duration-1000 dark:duration-1000 flex justify-center '></i>
-            : <i onClick={handleChangeMode} className='bx bxs-moon text-black bg-gray-400 rounded-full p-1 m-2 cursor-pointer dark:transition-colors duration-1000 dark:duration-1000 flex justify-center '></i>
+            <i onClick={handleChangeMode} className=' w-[100px] my-5 mx-auto bx bxs-sun text-yellow-400 bg-black border-[1px] rounded-full p-1 cursor-pointer dark:transition-colors duration-1000 dark:duration-1000 flex justify-center '></i>
+            : <i onClick={handleChangeMode} className='w-[100px] my-5 mx-auto bx bxs-moon text-black bg-gray-400 rounded-full p-1 m-2 cursor-pointer dark:transition-colors duration-1000 dark:duration-1000 flex justify-center '></i>
         }
 
-        <form 
-        className='flex flex-col gap-4'
-        action="">
+        <form
+          className='flex flex-col gap-4'
+          action="">
           <div>
             <input
               className='bg-gray-400/40 text-center flex m-auto mt-1 rounded-lg font-bold'
@@ -79,7 +80,9 @@ const Pokedex = () => {
         setCurrentPage={setCurrentPage}
         currentPage={currentPage}
       />
-      <PokemonList pokemons={itemsInCurrentPage} />
+      <PokemonList pokemons={itemsInCurrentPage}
+        setCurrentPage={setCurrentPage}
+        currentPage={currentPage} />
     </main>
   )
 }

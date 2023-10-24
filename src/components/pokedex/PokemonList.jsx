@@ -1,9 +1,10 @@
 import React from 'react'
 import PokemonCard from './PokemonCard'
 
-const PokemonList = ({ pokemons }) => {    
+const PokemonList = ({ pokemons, currentPage, setCurrentPage }) => {    
+    if (pokemons.length == 0 ) {setCurrentPage(1)}
     return (
-        <section className='grid px-4 gap-4 grid-cols-[repeat(auto-fit,_minmax(220px,_1fr))]'>
+        <section className='grid px-4 gap-4 grid-cols-[repeat(auto-fit,_minmax(220px,_1fr))] '>
             {
                 pokemons.map((pokemon) => <PokemonCard key={pokemon.url} pokemonUrl={pokemon.url} />)
             }

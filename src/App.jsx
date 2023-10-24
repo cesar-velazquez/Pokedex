@@ -8,8 +8,10 @@ import PrivateRoutes from './components/aut/PrivateRoutes'
 
 function App() {
 
-  return (
-    <Routes>
+  return (    
+    <main className='dark:bg-black transition-colors duration-500 h-[100%] '>
+      <section className='max-w-[1200px] mx-auto'>
+      <Routes>
       <Route path='/' element={<Home/>} />
 
       <Route element={<PrivateRoutes/>}>
@@ -20,6 +22,8 @@ function App() {
       
       <Route path='*' element={<Page404/>} />
     </Routes>
+      </section>
+    </main>
   )
 }
 
